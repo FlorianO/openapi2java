@@ -33,7 +33,8 @@ public class ParameterResolver {
     }
 
     public String getParameterName(String $ref) {
-        return $ref.replace("#/components/parameters/", "");
+        int lastSlash = $ref.lastIndexOf('/');
+        return lastSlash >= 0 ? $ref.substring(lastSlash + 1) : $ref;
     }
 
     public Optional<Parameter> get(String $ref) {

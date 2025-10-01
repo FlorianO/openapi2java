@@ -33,7 +33,8 @@ public class ResponseResolver {
     }
 
     public String getResponseName(String $ref) {
-        return $ref.replace("#/components/responses/", "");
+        int lastSlash = $ref.lastIndexOf('/');
+        return lastSlash >= 0 ? $ref.substring(lastSlash + 1) : $ref;
     }
 
     public Optional<ApiResponse> get(String $ref) {
