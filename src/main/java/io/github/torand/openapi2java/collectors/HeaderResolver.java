@@ -33,7 +33,8 @@ public class HeaderResolver {
     }
 
     public String getHeaderName(String $ref) {
-        return $ref.replace("#/components/headers/", "");
+        int lastSlash = $ref.lastIndexOf('/');
+        return lastSlash >= 0 ? $ref.substring(lastSlash + 1) : $ref;
     }
 
     public Optional<Header> get(String $ref) {
